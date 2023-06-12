@@ -2,6 +2,7 @@ const validUrl = require("valid-url");
 const collegemodelcheck = (req, res, next) => {
   try {
     const { name, fullName, logoLink } = req.body;
+    name=name.trim();
     if (!name) {
       return res
         .status(400)
@@ -10,6 +11,7 @@ const collegemodelcheck = (req, res, next) => {
           message: "Please provide college name in short form",
         });
     }
+    fullName=fullName.trim();
     if (!fullName) {
       return res
         .status(400)
