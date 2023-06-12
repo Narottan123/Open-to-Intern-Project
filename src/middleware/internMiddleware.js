@@ -3,13 +3,15 @@ const internModel = require("../Model/internModel");
 const internmodelcheck = async (req, res, next) => {
   try {
     let { name, email, mobile, collegeId } = req.body;
+    name=name.trim();
     if (!name) {
       return res.status(400).send({
         status: false,
         message: "Please provide name",
       });
     }
-
+    
+    email=email.trim();
     //emailId validation*******************************
     if (!email) {
       return res.status(400).send({
@@ -29,7 +31,7 @@ const internmodelcheck = async (req, res, next) => {
     }
 
     //mobile number validation check
-
+    mobile=mobile.trim();
     if (!mobile) {
       return res.status(400).send({
         status: false,
@@ -50,6 +52,7 @@ const internmodelcheck = async (req, res, next) => {
     }
 
     //collegeId validation check
+    collegeId=collegeId.trim();
     if (!collegeId) {
       return res.status(400).send({
         status: false,
