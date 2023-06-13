@@ -5,13 +5,13 @@ const createCollege = async (req, res) => {
   try {
     let data = req.body;
     let saveddata = await collegeModel.create(data);
-    res.status(201).send({
+    return res.status(201).send({
       status: true,
       message: "College creeated successfully",
       saveddata,
     });
   } catch (err) {
-    res.status(500).send({ status: false, message: error.message });
+    return res.status(500).send({ status: false, message: err.message });
   }
 };
 
@@ -38,9 +38,9 @@ const getCollegeDEtails = async (req, res) => {
       logoLink: data.logoLink,
       interns: saveddata,
     };
-    res.status(200).send({ status: true, data: obj });
+    return res.status(200).send({ status: true, data: obj });
   } catch (err) {
-    res.status(500).send({ status: false, message: err.message })
+    return res.status(500).send({ status: false, message: err.message })
   }
 };
 module.exports.createCollege = createCollege;
