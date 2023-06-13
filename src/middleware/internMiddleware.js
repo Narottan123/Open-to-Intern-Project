@@ -22,7 +22,7 @@ const internmodelcheck = async (req, res, next) => {
     email = email.toLowerCase();
     let emailexist = await internModel.findOne({ email: email });
     if (emailexist) {
-      return res.status(404).json({status:false, message: "email id should be unique" });
+      return res.status(400).json({status:false, message: "email id should be unique" });
     }
     const emailRegex =
       /^[a-zA-Z][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
