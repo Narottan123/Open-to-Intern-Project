@@ -8,7 +8,7 @@ const createCollege = async (req, res) => {
     res
       .status(201)
       .send({
-        status: false,
+        status: true,
         message: "College creeated successfully",
         saveddata,
       });

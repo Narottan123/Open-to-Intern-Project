@@ -22,12 +22,12 @@ const internmodelcheck = async (req, res, next) => {
     email = email.toLowerCase();
     let emailexist = await internModel.findOne({ email: email });
     if (emailexist) {
-      return res.status(400).json({ message: "email id should be unique" });
+      return res.status(404).json({status:false, message: "email id should be unique" });
     }
     const emailRegex =
       /^[a-zA-Z][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
-      return res.status(400).json({ message: "email id format is invalid " });
+      return res.status(400).json({status:false, message: "email id format is invalid " });
     }
 
     //mobile number validation check
@@ -42,13 +42,13 @@ const internmodelcheck = async (req, res, next) => {
     if (!/^[0-9]{10}$/.test(mobile)) {
       return res
         .status(400)
-        .json({ message: "Mobile number should be 10 digits" });
+        .json({status:false,message: "Mobile number should be 10 digits" });
     }
     let mobileNumber = await internModel.findOne({ mobile: mobile });
     if (mobileNumber) {
       return res
         .status(400)
-        .json({ message: "Mobile number should be unique" });
+        .json({status:false, message: "Mobile number should be unique" });
     }
 
     //collegeId validation check
