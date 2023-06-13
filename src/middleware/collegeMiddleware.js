@@ -38,8 +38,8 @@ const collegemodelcheck = (req, res, next) => {
 
     next();
   } catch (err) {
-    console.log("catch")
-    res.status(500).send({ status: false, message: error.message })
+    
+    res.status(500).send({ status: false, message: err.message })
   }
 };
 module.exports.collegemodelcheck = collegemodelcheck;
